@@ -1,0 +1,62 @@
+context:
+  region: "apne2"
+  vpc: "tf-k8s-boiler-vpc"
+  cidrs:
+    "primary": "10.222.0.0/16"
+  
+
+vpc:
+  name: "${vpc}"
+  cidr: "${cidrs.primary}"
+
+subnet_groups:
+  "public":
+    map_public_ip_on_launch: true
+    subnet:
+    - {cidr: "10.222.0.0/24", az_id: "${region}-az1"}
+    - {cidr: "10.222.1.0/24", az_id: "${region}-az2"}
+  "private":
+    subnet:
+    - {cidr: "10.222.2.0/24", az_id: "${region}-az1"}
+    - {cidr: "10.222.3.0/24", az_id: "${region}-az2"}
+
+nacl:
+  "public":
+    inbound:
+    - {
+      rule_number : 100,
+      rule_action : "allow",
+      from_port   : 0,
+      to_port     : 0,
+      protocol    : "-1",
+      cidr_block  : "0.0.0.0/0"
+    }
+    outbound:
+    - {
+      rule_number : 100,
+      rule_action : "allow",
+      from_port   : 0,
+      to_port     : 0,
+      protocol    : "-1",
+      cidr_block  : "0.0.0.0/0"
+    }
+  "private":
+    inbound:
+    - {
+      rule_number : 100,
+      rule_action : "allow",
+      from_port   : 22,
+      to_port     : 22,
+      protocol    : "tcp",
+      cidr_block  : "0.0.0.0/0"
+    }
+    outbound:
+    - {
+      rule_number : 100,
+      rule_action : "allow",
+      from_port   : 22,
+      to_port     : 22,
+      protocol    : "tcp",
+      cidr_block  : "0.0.0.0/0"
+    }
+
