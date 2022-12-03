@@ -41,6 +41,3 @@ module "vpc" {
   }
 }
 
-output "testinbnound2" {
-  value = local.config.nacl.public.inbound.*
-}

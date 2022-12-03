@@ -9,13 +9,13 @@ terraform {
   }
 }
 
-output "context" {
-  value =  yamldecode(file(var.config_file)).context
-}
+# output "context" {
+#   value =  yamldecode(file(var.config_file)).context
+# }
 
-output "config" {
-  value = yamldecode(templatefile(var.config_file, local.context))
-}
+# output "config" {
+#   value = yamldecode(templatefile(var.config_file, local.context))
+# }
 
 locals {
   context = yamldecode(file(var.config_file)).context
