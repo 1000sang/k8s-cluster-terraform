@@ -1,0 +1,13 @@
+context:
+  ami: "ami-0454bb2fefc7de534"
+  
+ami: "${ami}"
+
+remote_states:
+  "vpc":
+      organization: "devfloors"
+      workspace: "terraform-k8s-boilerplate"
+
+instance_name: "test-bastion"
+security_group_name: "test-bastion-sg"
+key_name: "panki-dev"
