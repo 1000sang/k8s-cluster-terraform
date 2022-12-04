@@ -1,7 +1,7 @@
 resource "aws_security_group" "this" {
 
   name   = local.config.security_group_name
-  vpc_id = data.tfe_outputs.this["vpc"].values.vpc_id
+  vpc_id = local.remote_states["network"].vpc_id
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]

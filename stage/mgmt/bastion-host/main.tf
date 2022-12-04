@@ -9,7 +9,7 @@ module "ec2_instance" {
   key_name               = local.config.key_name
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.this.id]
-  subnet_id              = data.tfe_outputs.this["vpc"].values.public_subnets[0]
+  subnet_id              = local.remote_states["network"].public_subnets[0]
 
   tags = {
     Terraform   = "true"
