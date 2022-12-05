@@ -1,0 +1,62 @@
+context:
+  region: ""
+  vpc: ""
+  cidrs:
+    "primary": ""
+  
+
+vpc:
+  name: ""
+  cidr: ""
+
+subnet_groups:
+  "public":
+    map_public_ip_on_launch: true
+    subnet:
+    - {cidr: "", az_id: ""}
+    - {cidr: "", az_id: ""}
+  "private":
+    subnet:
+    - {cidr: "", az_id: ""}
+    - {cidr: "", az_id: ""}
+
+nacl:
+  "public":
+    inbound:
+    - {
+      rule_number : 100,
+      rule_action : "",
+      from_port   : 0,
+      to_port     : 0,
+      protocol    : "",
+      cidr_block  : ""
+    }
+    outbound:
+    - {
+      rule_number : 100,
+      rule_action : "",
+      from_port   : 0,
+      to_port     : 0,
+      protocol    : "",
+      cidr_block  : ""
+    }
+  "private":
+    inbound:
+    - {
+      rule_number : 100,
+      rule_action : "",
+      from_port   : 0,
+      to_port     : 0,
+      protocol    : "",
+      cidr_block  : ""
+    }
+    outbound:
+    - {
+      rule_number : 100,
+      rule_action : "",
+      from_port   : 0,
+      to_port     : 0,
+      protocol    : "",
+      cidr_block  : ""
+    }
+

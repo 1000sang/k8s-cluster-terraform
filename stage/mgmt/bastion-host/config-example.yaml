@@ -1,0 +1,13 @@
+context:
+  ami: ""
+  
+ami: ""
+
+remote_states:
+  "":
+      organization: ""
+      workspace: ""
+
+instance_name: ""
+security_group_name: ""
+key_name: ""

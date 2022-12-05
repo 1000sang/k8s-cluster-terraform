@@ -1,4 +1,7 @@
+# terraform
 .terraform*
+terraform.tf
+config.yaml
 
 lib-cov
 *.seed
