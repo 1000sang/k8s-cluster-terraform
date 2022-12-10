@@ -9,3 +9,7 @@ output "public_subnets" {
 output "private_subnets" {
     value = module.vpc.private_subnets
 }
+
+output "sg_cluster_id" {
+    value = aws_security_group.test-sg-eks-cluster.id
+}
