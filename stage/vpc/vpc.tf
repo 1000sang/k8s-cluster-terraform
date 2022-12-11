@@ -38,6 +38,8 @@ module "vpc" {
   tags = {
     Terraform = "true"
     Environment = "staging"
+    kubernetes.io/role/internal-elb =  1
+    kubernetes.io/role/elb =  1
   }
 }
 
