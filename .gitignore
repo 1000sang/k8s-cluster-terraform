@@ -2,6 +2,7 @@
 .terraform*
 terraform.tf
 config.yaml
+remote-states.tf
 
 lib-cov
 *.seed
