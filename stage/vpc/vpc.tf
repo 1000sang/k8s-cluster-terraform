@@ -18,7 +18,14 @@ module "vpc" {
 
   azs = ["ap-northeast-2a","ap-northeast-2c"]
   private_subnets = local.config.subnet_groups.private.subnet[*].cidr
+  # private_subnet_tags = {
+  #   kubernetes.io/role/internal-elb =  1
+  # }
+
   public_subnets = local.config.subnet_groups.public.subnet[*].cidr
+  # public_subnet_tags = {
+  #   kubernetes.io/role/elb =  1
+  # }
 
   enable_nat_gateway = true
   single_nat_gateway = true
@@ -38,8 +45,8 @@ module "vpc" {
   tags = {
     Terraform = "true"
     Environment = "staging"
-    kubernetes.io/role/internal-elb =  1
-    kubernetes.io/role/elb =  1
+    # kubernetes.io/role/internal-elb =  1
+    # kubernetes.io/role/elb =  1
   }
 }
 
