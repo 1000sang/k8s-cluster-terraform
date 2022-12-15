@@ -6,6 +6,7 @@ locals {
 
   cluster_name = local.remote_states["cluster"].name
   cluster_endpoint = local.remote_states["cluster"].cluster_endpoint
-  role_arn = local.remote_states["cluster"].role_arn  
+  oidc_provider_arn = local.remote_states["cluster"].oidc_provider_arn
+
   vpc_id = local.remote_states["network"].vpc_id
 }

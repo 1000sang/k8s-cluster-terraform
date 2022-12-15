@@ -28,8 +28,7 @@ locals {
   }
 
   vpc_id = local.remote_states["network"].vpc_id
-  public_subnets = local.remote_states["network"].public_subnets
-  private_subnets = local.remote_states["network"].private_subnets
+  public_subnet_ids = local.remote_states["network"].public_subnet_ids
 }
 
 provider "aws" {
