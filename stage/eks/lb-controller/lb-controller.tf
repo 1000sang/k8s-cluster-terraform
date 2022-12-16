@@ -28,7 +28,7 @@ provider "helm" {
   }
 }
 
-resource "kubernetes_service_account" "service-account" {
+resource "kubernetes_service_account" "alb-controller-service-account" {
   metadata {
     name = "aws-load-balancer-controller"
     namespace = "kube-system"
@@ -52,7 +52,7 @@ resource "helm_release" "lb" {
   chart      = "aws-load-balancer-controller"
   namespace  = "kube-system"
   depends_on = [
-    kubernetes_service_account.service-account
+    kubernetes_service_account.alb-controller-service-account
   ]
 
   set {
