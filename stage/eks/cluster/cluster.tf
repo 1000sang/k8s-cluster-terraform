@@ -20,8 +20,8 @@ module "eks" {
   }
 
   vpc_id     =  local.remote_states["network"].vpc_id
-  subnet_ids =  local.remote_states["network"].private_subnets
-  control_plane_subnet_ids = local.remote_states["network"].private_subnets
+  subnet_ids =  local.private_subnet_ids
+  control_plane_subnet_ids = local.private_subnet_ids
 
   # EKS Managed Node Group(s)
   # eks_managed_node_group_defaults = {
@@ -71,16 +71,3 @@ module "eks" {
   }
 }
 
-module "lb_role" {
-  source    = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-
-  role_name = "eks_lb"
-  attach_load_balancer_controller_policy = true
-
-  oidc_providers = {
-    main = {
-      provider_arn               = module.eks.oidc_provider_arn
-      namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
-    }
-  }
-}

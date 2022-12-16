@@ -19,3 +19,10 @@ spec:
             name: hello
             port:
               name: http
+      - pathType: Prefix
+        path: /grafana
+        backend:
+          service:
+            name: grafana
+            port:
+              name: http
