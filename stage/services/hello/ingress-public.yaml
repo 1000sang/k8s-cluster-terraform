@@ -20,9 +20,11 @@ spec:
             port:
               name: http
       - pathType: Prefix
-        path: /grafana
+        path: /frontend
         backend:
           service:
-            name: grafana
+            name: frontend
             port:
               name: http
+
+for i in $(kubectl get deploy -n msa|grep -v NAME|awk '{print $1}'); do kubectl scale deploy/$i -n msa --replicas=1; done
