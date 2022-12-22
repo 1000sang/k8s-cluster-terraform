@@ -52,3 +52,13 @@ kubectl edit svc istio-ingressgateway -n istio-system
 
 # ingress gateway 실행 /stage/eks/addons/istio-1.16.1
 kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml -n msa
+
+# argo install /stage/mgmt/argo
+
+kubectl patch svc argocd-server -n argocd -p '{"spec":{"type": "LoadBalancer"}}'
+
+kubectl patch svc argocd-server -n argocd -p '{"metadata":{"annotations":{"service.beta.kubernetes.io/aws-load-balancer-type": "nlb"}}}'
+
+# argocd 최초 비밀번호 조회
+kubectl get secret argocd-initial-admin-secret -o yaml -n argocd
+echo ${password}|base64 -d
