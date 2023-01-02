@@ -62,3 +62,7 @@ kubectl patch svc argocd-server -n argocd -p '{"metadata":{"annotations":{"servi
 # argocd 최초 비밀번호 조회
 kubectl get secret argocd-initial-admin-secret -o yaml -n argocd
 echo ${password}|base64 -d
+
+
+
+# git filter-branch --index-filter 'git rm --cached --ignore-unmatch stage/eks/addons/istio-1.16.1/bin/istioctl' <sha1>..HEAD
