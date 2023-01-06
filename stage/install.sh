@@ -11,7 +11,7 @@ kubectl wait \
 kubectl apply -f manifests/
  
 # istio 설치 /stage/eks/addons/istio-1.16.1
-export PATH="$PATH:/Users/kmov/Documents/tf-k8s-boilerplate/stage/eks/addons/istio-1.16.1/bin"
+export PATH="$PATH:/Users/kmov/Documents/k8s-cluster-terraform/stage/eks/addons/istio-1.16.1/bin"
 istioctl operator init
 kubectl apply -f istio-demo.yaml
 
@@ -22,6 +22,7 @@ kubectl create ns msa
 kubectl label ns msa istio-injection=enabled
 kubectl get ns msa --show-labels
 
+# kiali - prometheus 연동
 kubectl apply -f prometheus-rbac.yaml
 kubectl apply -f prometheus-operator.yaml
 
