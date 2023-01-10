@@ -27,9 +27,9 @@ module "eks" {
   # eks_managed_node_group_defaults = {
   #   iam_role_arn = "arn:aws:iam::280413110545:role/k8s-test-cluster-alb-ingress-controller"
   # }
-  
+
   eks_managed_node_groups = {
-    monitoring = {
+    one = {
       min_size     = 1
       max_size     = 10
       desired_size = 1
@@ -37,24 +37,24 @@ module "eks" {
       instance_types = ["t3.medium"]
       capacity_type  = "SPOT"
 
-      labels = {
-        node = "monitoring"
-      }
+      # labels = {
+      #   node = "monitoring"
+      # }
     }
 
-    msa = {
-      min_size = 1
-      max_size = 10
-      desired_size = 1
+    # msa = {
+    #   min_size = 1
+    #   max_size = 10
+    #   desired_size = 1
 
-      instance_types = ["t3.large"]
-      capacity_type = "SPOT"
+    #   instance_types = ["t3.large"]
+    #   capacity_type = "SPOT"
 
-      labels = {
-        node = "msa"
-        istio-injection = "enabled"
-      }
-    }
+    #   labels = {
+    #     node = "msa"
+    #     istio-injection = "enabled"
+    #   }
+    # }
   }
 
  node_security_group_additional_rules = {
