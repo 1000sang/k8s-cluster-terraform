@@ -57,6 +57,15 @@ module "eks" {
     # }
   }
 
+  fargate_profiles = {
+    default = {
+      name = "default_profile_name"
+      selectors = [{
+        namespace = "default"
+        }]
+    }
+  }
+
  node_security_group_additional_rules = {
 
     #Recommended outbound traffic for Node groups
